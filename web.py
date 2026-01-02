@@ -18,6 +18,7 @@ from src.credential_manager import CredentialManager
 from src.gemini_router import router as gemini_router
 
 # Import all routers
+from src.goal_plugin import router as goal_plugin_router
 from src.openai_router import router as openai_router
 from src.task_manager import shutdown_all_tasks
 from src.web_routes import router as web_router
@@ -108,6 +109,9 @@ app.include_router(openai_router, prefix="", tags=["OpenAI Compatible API"])
 
 # Gemini原生路由 - 处理Gemini格式请求
 app.include_router(gemini_router, prefix="", tags=["Gemini Native API"])
+
+# Goal focus plugin - 专注目标拆解插件
+app.include_router(goal_plugin_router, prefix="", tags=["Goal Focus Plugin"])
 
 # Web路由 - 包含认证、凭证管理和控制面板功能
 app.include_router(web_router, prefix="", tags=["Web Interface"])
